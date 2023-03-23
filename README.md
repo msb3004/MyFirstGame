@@ -9,6 +9,7 @@ description:
 You play as a sheap on field and wolfs are chasing you.
 You have 3 lives a stamina and health bar if you run out of stamina you have to wait for it to
 reach a certain point before you can run and scare the wolfs.
+The wolfs also flock so they don't bunch up.
 
 fear mechanic:
 when F is pressed it quickly drains your stamina, but the wolwes get "scared" start to wander and ignore you.
