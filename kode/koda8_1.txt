@@ -1,0 +1,97 @@
+let index = 0;
+
+class Particle{
+  
+  constructor(x, y, m){
+    this.pos = createVector(x, y);
+    
+    
+    
+    this.up = createVector(0, -2);
+    
+    this.grav = createVector(0, 1);
+    this.vel = createVector(0, 1);
+    this.acc = createVector(0, 0);
+    //this.vel.mult(random(3));
+    this.mass = m;
+    this.r = sqrt(this.mass) * 10 ;
+    
+    
+    
+    
+   
+  }
+  
+  /*gravity(){
+    this.grav.normalize();
+    this.grav.mult(1);
+          
+      this.vel.add(this.grav)   
+      this.pos.add(this.vel);
+    
+    
+  }*/
+  
+  apply(force){
+    this.acc = force;
+    this.vel.add(acc);
+    
+  }
+  
+ /* movement(){
+  if(keyCode === UP_ARROW){
+      let up = createVector(1, 0);
+     this.vel.apply(this.up);
+    console.log("test")
+      
+    }
+  if(keyCode === DOWN_ARROW){
+      
+    }
+  if(keyCode === LEFT_ARROW){
+      
+    }
+  if(keyCode === RIGHT_ARROW){
+  
+  }
+    
+  }*/
+  
+  update(){
+    this.vel.add(this.acc);
+    this.pos.add(this.vel);
+  }
+  
+  show(){
+    stroke(255,100);
+    strokeWeight(2);
+    fill(255, 100);
+    ellipse(this.pos.x, this.pos.y, this.r *2);
+    
+    
+      
+    }
+  }
+//function 
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

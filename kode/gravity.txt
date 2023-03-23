@@ -1,0 +1,9 @@
+/*gravity(){
+    this.grav.normalize();
+    this.grav.mult(1);
+          
+      this.vel.add(this.grav)   
+      this.pos.add(this.vel);
+    
+    
+  }*/

@@ -1,0 +1,57 @@
+let index = 0;
+
+class Particle{
+  
+  constructor(x, y, m){
+    this.pos = createVector(x, y);
+    
+    
+    
+    this.up = createVector(0, -2);
+    
+    this.grav = createVector(0, 1);
+    this.vel = createVector(0, 1);
+    this.acc = createVector(0, 0);
+    //this.vel.mult(random(3));
+    this.mass = m;
+    this.r = sqrt(this.mass) * 10 ;
+    
+    
+    
+    
+   
+  }
+  
+  gravity(){
+    this.grav.normalize();
+    this.grav.mult(1);
+          
+      this.vel.add(this.grav)   
+      this.pos.add(this.vel);
+    
+    console.log(this.grav);
+  }
+  
+  apply(force){
+    this.acc = force;
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  show(){
+    stroke(255,100);
+    strokeWeight(2);
+    fill(255, 100);
+    ellipse(this.pos.x, this.pos.y, this.r *2);
+    
+  }
+  
+  
+
+}

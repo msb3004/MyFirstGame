@@ -1,0 +1,65 @@
+let particle;
+let gravity;
+function setup(){
+  
+ 
+  createCanvas(400, 400);
+
+  particle = new Particle(200, 200, 1);
+  
+   gravity = createVector(0, 1);
+
+  
+  let weight = p5.Vector.mult(gravity, particle.mass);
+  
+  //particle.applyForce(gravity); 
+  
+  
+}
+
+
+function draw(){
+  background(0);
+  
+ /* if (mouseIsPressed){
+    
+    let wind = createVector(0.1, 0);
+    particle.applyForce(wind);
+    
+  }
+  */
+  
+  
+ if(keyIsDown(UP_ARROW)){
+   let up1 = particle.up;
+         particle.applyForce(up1);
+ }
+  
+  
+  
+  particle.applyForce(gravity);
+  
+  particle.friction();
+  
+  
+  particle.update();
+  particle.edges();
+  particle.show();
+  
+}
+
+function keyPressed(){
+     if( keyCode === UP_ARROW){
+          console.log("bounce!");
+         let up1 = particle.up;
+         //particle.applyForce(up1);
+
+     } 
+  }
+  
+function keyReleased(){
+  console.log('test');
+
+  
+
+}
