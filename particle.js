@@ -183,6 +183,40 @@ class Vehicle {
     
   }
   
+
+  separation(vehicle) {
+    let perceptionRadius = 40;
+    let steering = createVector();
+    let total = 0;
+    for (let other of seekers) {
+      let d = dist(this.pos.x, this.pos.y, other.pos.x, other.pos.y);
+      if (other != this && d < perceptionRadius) {
+        let diff = p5.Vector.sub(this.pos, other.pos);
+        diff.div(d * d);
+        steering.add(diff);
+        total++;
+      }
+    }
+    if (total > 0) {
+      steering.div(total);
+      steering.setMag(this.maxSpeed);
+      steering.sub(this.vel);
+      steering.limit(this.maxForce);
+    }
+    return steering;
+  }
+
+  
+
+  flock(vehicle) {
+    
+    let separation = this.separation(vehicle);
+
+    separation.mult(1);
+
+    this.acc.add(separation);
+  }
+  
   
 
   seek(target) {
