@@ -185,7 +185,7 @@ class Vehicle {
   
 
   separation(vehicle) {
-    let perceptionRadius = 40;
+    let perceptionRadius = 20;
     let steering = createVector();
     let total = 0;
     for (let other of seekers) {
