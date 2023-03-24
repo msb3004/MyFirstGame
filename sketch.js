@@ -16,9 +16,9 @@ let lifeCounter = lifeCounterHolder;
 let wander = false;
 let locations = [];
 
-let currentTime = 0;
-let lastTime = 0;
-let debounceMs = 1000;
+
+let cheatHealth = false;
+let cheatLives = false;
 
 var x = 400;
 var y = 400;
@@ -54,13 +54,7 @@ function setup() {
 
 function draw() {
   grass = background(bggrass);
-  
-  currentTime = millis();
-  readyToPlay = (currentTime - lastTime) > debounceMs;
 
-
-
-  
   for(let i = 0; i < lifeCounter; i++){
     //toliko življenj kot trenutno ima igralec izriši srčkov
     heart(i * 50 + 50, 100, 30);
@@ -69,6 +63,20 @@ function draw() {
   if(moving && !gamepaused){
      particle.movement();
      }
+
+     if(keyIsDown(67) && keyIsDown(72) && cheatHealth == false){
+      cheatHealth = true;
+    }
+    if(keyIsDown(88) && keyIsDown(72) && cheatHealth == true){
+      cheatHealth = false;
+    }
+
+    if(keyIsDown(67) && keyIsDown(76) && cheatLives == false){
+      cheatLives = true;
+    }
+    if(keyIsDown(88) && keyIsDown(76) && cheatLives == true){
+      cheatLives = false;
+    }
   
   
   
@@ -92,7 +100,7 @@ function draw() {
     
     if(vehiclePOS.x <= particle.pos.x + 5 && vehiclePOS.x >= particle.pos.x - 5 &&              vehiclePOS.y <= particle.pos.y + 5 && vehiclePOS.y >= particle.pos.y - 5){
       
-      if(health > 0)
+      if(health > 0 && cheatHealth == false)
        health--;
       if(health == 0 && lifeCounter > 1){
         textSize(50)
@@ -103,7 +111,10 @@ function draw() {
         
         if( keyIsDown(32)){
           
-          lifeCounter--;
+          if(cheatLives == false){
+            lifeCounter--;
+          }
+
           moving = true;
           gamepaused = false;
           particle.pos.set(400, 400);
@@ -161,6 +172,7 @@ function draw() {
     }
   
     }
+    
     
   
   

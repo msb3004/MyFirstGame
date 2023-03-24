@@ -5,6 +5,7 @@ let walk = 1;
 let sprint = 3;
 let health = 780;
 
+let cheatStamina = false;
 
 
 let fear = false;
@@ -67,10 +68,10 @@ class Particle{
   
     //////////////////////////////////////////
     
-  if(keyIsDown(UP_ARROW) && keyIsDown(SHIFT) && stamina > 0 && stamina_slow == false ||
-     keyIsDown(DOWN_ARROW) && keyIsDown(SHIFT) && stamina > 0 && stamina_slow == false ||
-     keyIsDown(LEFT_ARROW) && keyIsDown(SHIFT) && stamina > 0 && stamina_slow == false ||
-     keyIsDown(RIGHT_ARROW) && keyIsDown(SHIFT) && stamina > 0 && stamina_slow == false){
+  if(keyIsDown(UP_ARROW) && keyIsDown(SHIFT) && stamina > 0 && stamina_slow == false && cheatStamina == false ||
+     keyIsDown(DOWN_ARROW) && keyIsDown(SHIFT) && stamina > 0 && stamina_slow == false && cheatStamina == false ||
+     keyIsDown(LEFT_ARROW) && keyIsDown(SHIFT) && stamina > 0 && stamina_slow == false && cheatStamina == false ||
+     keyIsDown(RIGHT_ARROW) && keyIsDown(SHIFT) && stamina > 0 && stamina_slow == false && cheatStamina == false){
       
      stamina = stamina - 3;
       
@@ -101,8 +102,17 @@ class Particle{
     fear = false;
   }
   
-  if(fear && stamina > 0 ){
+  if(fear && stamina > 0  && cheatStamina == false ){
     stamina = stamina - 3;
+  }
+
+  ////////////////////////////////////////////////////
+
+  if(keyIsDown(67) && keyIsDown(83) && cheatStamina == false){
+    cheatStamina = true;
+  }
+  if(keyIsDown(88) && keyIsDown(83) && cheatStamina == true){
+    cheatStamina = false;
   }
 
   }
