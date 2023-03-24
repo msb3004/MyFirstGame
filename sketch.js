@@ -162,12 +162,14 @@ function draw() {
       seekers[i].update();
       seekers[i].show();
       seekers[i].edges2();
+      seekers[i].flock();
     }
     else if(!gamepaused && fear == true){
       seekers[i].wander();
       seekers[i].update();
       seekers[i].show();
       seekers[i].edges2();
+      seekers[i].flock();
       
     }
   
